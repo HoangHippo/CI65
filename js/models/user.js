@@ -1,5 +1,5 @@
 export async function register(name, email, password) {
-    let response = await auth.createUserWithEmailAndPassword(email, password); // xay ra hien tuong bat dong bo
+    let response = await auth.createUserWithEmailAndPassword(email, password); // xảy ra hiện tượng bất đồng bộ
     console.log(response);
     console.log("Register successfully");
     console.log(auth.currentUser);

@@ -1,7 +1,7 @@
 import BaseComponent from "../BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
 
-import { validateEmail } from "../utils.js";
+import { appendTo, validateEmail } from "../utils.js";
 
 export default class LoginScreen extends BaseComponent {
 
@@ -65,11 +65,15 @@ export default class LoginScreen extends BaseComponent {
 
         let $form = document.createElement('form');
         $form.onsubmit = this.handleLogin;
-        $form.append(
-            _email.render(),
-            _password.render(),
-            $btn
-        );
+        // $form.append(
+        //     _email.render(),
+        //     _password.render(),
+        //     $btn
+        // );
+
+        appendTo($form, _email, _password);
+
+        $form.append($btn);
 
         // HTMLElement || Node || HTML String
         $container.append(
@@ -84,23 +88,23 @@ export default class LoginScreen extends BaseComponent {
         event.preventDefault(); // chặn chuyển hướng đến action
 
         let data = this.state.data;
-        let errorString = this.state.errors;
-
+        let errors = this.state.errors;
         errors.email = '';
         errors.password = '';
 
         if (data.email == '' || !validateEmail(data.email)) {
-            errors.email += 'Invalid email\n';
+            errors.email = 'Invalid email';
         }
 
         if (data.password == '') {
-            errors.password += 'Invalid password\n';
+            errors.password = "Invalid password";
         }
 
         let tmpState = this.state;
         tmpState.errors = errors;
         this.setState(tmpState);
 
+        // this.setState({ data: data, errors: errors });
 
     }
 }

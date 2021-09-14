@@ -33,10 +33,11 @@ export default class BaseComponent {
         this.refresh();
     }
 
+    // thay đổi lại giao diện cho phù hợp với trạng thái hiện tại
     refresh() {
         let $element = this.render();
 
-        if (this.$element) {
+        if(this.$element) {
             this.$element.replaceWith($element);
         }
         this.$element = $element;

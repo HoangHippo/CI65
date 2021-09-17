@@ -6,13 +6,14 @@
 import IndexScreen from "./screens/IndexScreen.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
+import CreateChatGroupScreen from "./screens/CreateChatGroupScreen.js";
+
 import { appendTo } from "./utils.js";
 
-
 let $app = document.getElementById('app');
-appendTo($app, new IndexScreen());
+appendTo($app, new CreateChatGroupScreen());
 
-import data from './data/food.js'
+import data from './data/food.js';
 console.log(data);
 
 // $app.append(new RegisterScreen().render()); // render 1 lần duy nhất
@@ -25,3 +26,6 @@ console.log(data);
 // document.replaceChild(hello, $h2);
 
 // console.log(hello);
+
+// NavigoJS (v7)
+// React -> React Router / React Router DOM
